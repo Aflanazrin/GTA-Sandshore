@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Inquiry</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin: 20px;
+        }
+        label, select, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        #softwareOptions {
+            display: none;
+        }
+        input[type="submit"] {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project Inquiry Form</h1>
+    <form>
+        <label for="projectType">What kind of project are you looking for?</label>
+        <select id="projectType" name="projectType">
+            <option value="" disabled selected>Select an option</option>
+            <option value="software">Software</option>
+            <option value="website">Website</option>
+            <option value="cad">CAD</option>
+        </select>
+        <br>
+
+        <div id="softwareOptions" style="display: none;">
+            <label for="softwareType">What kind of software?</label>
+            <select id="softwareType" name="softwareType">
+                <option value="" disabled selected>Select an option</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="erp">ERP</option>
+            </select>
+            <br>
+        </div>
+
+        <label for="timePeriod">Time period (in days, only numbers allowed):</label>
+        <input type="number" id="timePeriod" name="timePeriod" min="0">
+        <br>
+
+        <input type="submit" value="Generate">
+    </form>
+
+    <script>
+        const projectTypeSelect = document.getElementById("projectType");
+        const softwareOptionsDiv = document.getElementById("softwareOptions");
+
+        projectTypeSelect.addEventListener("change", function () {
+            if (projectTypeSelect.value === "software") {
+                softwareOptionsDiv.style.display = "block";
+            } else {
+                softwareOptionsDiv.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
